@@ -1,4 +1,4 @@
-import sys; sys.path.insert(0,'/home/claude/brand')
+import sys; import os; sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
 from brand import *
 import os
 W,H=1080,1350; M=70; CW=W-2*M

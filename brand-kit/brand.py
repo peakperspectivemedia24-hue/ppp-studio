@@ -2,7 +2,9 @@ from PIL import Image, ImageDraw, ImageFont
 import numpy as np, math
 from functools import lru_cache
 CREAM=(252,243,228); INK=(26,26,26); RED=(198,35,40)
-ANTON="/home/claude/brand/node_modules/@fontsource/anton/files/anton-latin-400-normal.woff"
+import os
+HERE=os.path.dirname(os.path.abspath(__file__))
+ANTON=os.path.join(HERE,"node_modules/@fontsource/anton/files/anton-latin-400-normal.woff")
 INTER="/usr/share/fonts/opentype/inter/Inter-%s.otf"
 @lru_cache(maxsize=None)
 def A(s): return ImageFont.truetype(ANTON,int(s))
@@ -35,7 +37,7 @@ def wrap(d,t,f,maxw):
     if cur: out.append(cur)
     return out
 # --- logo mark -------------------------------------------------
-_src=np.asarray(Image.open("/home/claude/brand/logo.jpg").convert("RGB")).astype(float)
+_src=np.asarray(Image.open(os.path.join(HERE,"logo.jpg")).convert("RGB")).astype(float)
 _bg=np.array([252,243,228.])
 _dist=np.sqrt(((_src-_bg)**2).sum(2))
 _alpha=np.clip((_dist-30)/70,0,1)

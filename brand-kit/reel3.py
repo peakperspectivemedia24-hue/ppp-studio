@@ -1,4 +1,4 @@
-import sys,subprocess; sys.path.insert(0,'/home/claude/brand')
+import sys,subprocess; import os; sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
 from brand import *
 W,H,FPS,DUR=1080,1920,30,20.0; M=70; CW=W-2*M
 SS=3
