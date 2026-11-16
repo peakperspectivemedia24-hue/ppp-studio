@@ -170,7 +170,7 @@ sched=[("09:30","Set-up","Crew in, lights and audio set, stand detail shots befo
 ("12:00","Engineer's Minute","Short on-camera explanations with your technical team"),
 ("14:00","Buyers' Voice","Visitor conversations and stand activity at peak footfall"),
 ("16:30","Leadership","A short interview with Dynemech's leadership on the brand"),
-("18:00","Same-day reel","On-site editor cuts the day's first reel, delivered that evening")]
+("18:00","Wrap and backup","Footage and photos backed up on two drives before we leave the hall")]
 lx=M+190
 d.line([lx,y+20,lx,y+len(sched)*128-60],fill=RED,width=4)
 for i,(t,a,b) in enumerate(sched):
@@ -182,9 +182,9 @@ for i,(t,a,b) in enumerate(sched):
 y+=len(sched)*128+20
 d.rounded_rectangle([M,y,W-M,y+250],radius=24,fill=INK)
 d.text((M+50,y+36),"YOUR CREW ON THE DAY",font=I("SemiBold",28),fill=RED)
-crew=["Director / producer","Cinema camera operator (Sony FX3)","Photographer","On-site editor"]
+crew=["Director / producer","Cinema camera operator and photographer (Sony FX3)"]
 for i,c in enumerate(crew):
-    cx=M+50+(i%2)*((CW-100)//2); cy=y+100+(i//2)*62
+    cx=M+50; cy=y+100+i*62
     d.rectangle([cx,cy+12,cx+12,cy+24],fill=RED); d.text((cx+30,cy),c,font=I("Medium",32),fill=CREAM)
 footer(d,4); pages.append(im)
 
@@ -200,7 +200,7 @@ types=[("Stand highlight film","60–90 sec · 16:9 · website, YouTube, LinkedI
 for a,b in types: y=bullet(d,a,b,y)
 y+=20
 y=kicker(d,"FROM YES TO DELIVERY",y)
-steps=[("01","Confirm","Package chosen, 60% advance"),("02","Discovery call","20 min with your team; hero products and key messages"),("03","Shot list","Written plan for the day(s), approved by you"),("04","Coverage","Crew on your stand at ITME"),("05","Same evening","First reel delivered"),("06","Within 5 working days","All final edits, one revision round included")]
+steps=[("01","Confirm","Package chosen, 60% advance"),("02","Discovery call","20 min with your team; hero products and key messages"),("03","Shot list","Written plan for the day(s), approved by you"),("04","Coverage","Crew on your stand at ITME"),("05","Same day","Footage backed up on two drives"),("06","Within 5 working days","All final edits, one revision round included")]
 sw=(CW-50)//3
 for i,(n,a,b) in enumerate(steps):
     cx=M+(i%3)*(sw+25); cy=y+(i//3)*300
@@ -218,9 +218,9 @@ im,d=page(); logo(im)
 y=kicker(d,"05  ·  INVESTMENT",M)
 y=head(d,["CHOOSE YOUR","COVERAGE."],y+10)
 pk=[("1-DAY COVERAGE","₹ 50,000","One full show day of your choice",
-     ["6 creative assets","1 stand highlight film (60–90 sec)","3 reels, one delivered the same evening","2 Engineer's Minute explainer clips","Edited photographs from the day"],False),
+     ["6 creative assets","Professional headshots of your team present on the day","Full-day photography of the stand, products and visitors","All raw images handed over","A focused, complete option on its own"],False),
     ("2-DAY COVERAGE","₹ 80,000","Two show days of your choice",
-     ["12 creative assets","1 stand highlight film covering both days","7 reels, one delivered each evening","3 Engineer's Minute explainer clips","1 Buyers' Voice compilation","Edited photographs from both days"],True)]
+     ["12 creative assets: edited videos and carousels","Buyers' Voice compilation within the edited videos","Full photography across both days","Full team photography and headshots","All raw images handed over"],True)]
 pw=(CW-50)//2; ph_=980
 for i,(t,p,s,items,rec) in enumerate(pk):
     cx=M+i*(pw+50); bg=INK if rec else SOFT; fg=CREAM if rec else INK; sub=(200,195,185) if rec else GREY
@@ -240,7 +240,7 @@ for i,(t,p,s,items,rec) in enumerate(pk):
         yy=para(d,it,cx+76,yy,pw-120,f,fill=fg,lh=1.3)+18
 y+=ph_+60
 y=kicker(d,"BOTH PACKAGES INCLUDE",y)
-y=para(d,"Discovery call and written shot list · director, cinema camera operator, photographer and on-site editor · equipment (Sony FX3, gimbal, wireless audio, lighting) · travel to India Expo Centre & Mart · editing, colour, captions and licensed music · one revision round · final files in every format you need. No additional taxes.",M,y,CW,I("Regular",31))
+y=para(d,"Discovery call and written shot list · director and a cinema camera operator who also handles all photography · equipment (Sony FX3, gimbal, wireless audio, lighting) · travel to India Expo Centre & Mart · editing, colour, captions and licensed music · one revision round · final files in every format you need. No additional taxes.",M,y,CW,I("Regular",31))
 y+=24
 y=kicker(d,"PAYMENT",y)
 y=para(d,"60% advance on confirmation · 40% on delivery of final edits.",M,y,CW,I("Regular",31))
